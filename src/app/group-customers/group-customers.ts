@@ -1,39 +1,43 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
-
-interface Customer {
-  Id: string;
-  Name: string;
-  Email: string;
-  Age: number;
-  Image: string;
-}
-
-interface CustomerGroup {
-  CustomerTypeId: number;
-  CustomerTypeName: string;
-  Customers: Customer[];
-}
+import { Component, OnInit } from '@angular/core';
+import { CustomerHttpService } from '../services/customer-http';
+import { ICustomerGroup } from '../classes/ICustomerGroup';
 
 @Component({
   selector: 'app-group-customers',
   standalone: false,
   templateUrl: './group-customers.html',
-  styleUrl: './group-customers.css',
+  styleUrl: './group-customers.css'
 })
-export class GroupCustomers {
-  customerGroups$: Observable<CustomerGroup[]>;
-  errorMessage = '';
+export class GroupCustomers implements OnInit {
 
-  constructor(private http: HttpClient) {
-    this.customerGroups$ = this.http
-      .get<CustomerGroup[]>('/assets/data/customer.json')
-      .pipe(
-        catchError(() => {
-          this.errorMessage = 'Không thể tải dữ liệu khách hàng.';
-          return of([]);
-        }),
-      );
+  customerGroups: ICustomerGroup[] = [];
+  errMessage: string = '';
+
+  constructor(
+    private customerService: CustomerHttpService
+  ) {}
+
+  ngOnInit(): void {
+
+    this.customerService.getCustomerGroups().subscribe({
+
+      next: (data) => {
+
+        console.log('CUSTOMER DATA:', data);
+        this.customerGroups = data;
+
+        console.log(
+          'AFTER ASSIGN:',
+          this.customerGroups.length
+        );
+      },
+
+      error: (err) => {
+        console.error('CUSTOMER ERROR:', err);
+        this.errMessage = err.message;
+      }
+
+    });
+
   }
 }
