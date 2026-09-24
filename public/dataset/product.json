@@ -1,0 +1,5 @@
+[
+    { "id": 1, "name": "laptop", "price": 1000, "image": "https://fptshop.com.vn/tin-tuc/danh-gia/anh-meo-cute-181190" },
+    { "id": 2, "name": "phone", "price": -500, "image": "https://theselfishmeme.co.uk/avatar-anh-meo-cute" },
+    { "id": 3, "name": "tablet", "price": 300, "image": "https://random.dog/" }
+  ]

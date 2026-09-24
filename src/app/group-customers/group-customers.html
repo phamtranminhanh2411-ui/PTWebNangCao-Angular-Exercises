@@ -1,0 +1,29 @@
+<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<table class="customer-groups">
+	<tbody>
+		<ng-container *ngIf="customerGroups$ | async as groups">
+			<ng-container *ngFor="let group of groups">
+				<tr class="group-heading">
+					<td colspan="5">{{ group.CustomerTypeId }} - {{ group.CustomerTypeName }}</td>
+				</tr>
+				<tr class="column-heading">
+					<th>Id</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Age</th>
+					<th>#</th>
+				</tr>
+				<tr *ngFor="let customer of group.Customers">
+					<td>{{ customer.Id }}</td>
+					<td>{{ customer.Name }}</td>
+					<td>{{ customer.Email }}</td>
+					<td>{{ customer.Age }}</td>
+					<td>
+						<img [src]="customer.Image" [alt]="customer.Name" width="160" height="140" />
+					</td>
+				</tr>
+			</ng-container>
+		</ng-container>
+	</tbody>
+</table>

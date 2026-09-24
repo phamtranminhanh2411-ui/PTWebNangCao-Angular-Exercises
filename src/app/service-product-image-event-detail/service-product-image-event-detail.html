@@ -1,0 +1,12 @@
+@if (selectedProduct; as product) {
+	<button type="button" (click)="goBack()">Go Back</button>
+	<table>
+		<tr><td>ID:</td><td>{{ product.ProductId }}</td></tr>
+		<tr><td>Name:</td><td>{{ product.ProductName }}</td></tr>
+		<tr><td>Price:</td><td>{{ product.Price }}</td></tr>
+		<tr><td colspan="2"><img [src]="product.Image" [alt]="product.ProductName" width="180" height="180"></td></tr>
+	</table>
+} @else {
+	<p>Không tìm thấy sản phẩm.</p>
+	<button type="button" (click)="goBack()">Go Back</button>
+}

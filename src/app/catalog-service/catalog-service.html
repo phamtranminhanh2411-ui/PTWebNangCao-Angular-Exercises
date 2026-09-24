@@ -1,0 +1,38 @@
+<table class="catalog-table">
+	<tbody>
+		<ng-container *ngFor="let category of datas">
+			<tr class="category-row">
+				<th>Ma Danh Muc</th>
+				<th>Ten Danh Muc</th>
+			</tr>
+			<tr class="category-value-row">
+				<td>{{ category.Cateid }}</td>
+				<td>{{ category.CateName }}</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="products-cell">
+					<table class="products-table">
+						<thead>
+							<tr>
+								<th>Ma San Pham</th>
+								<th>Ten San Pham</th>
+								<th>Gia San Pham</th>
+								<th>Picture</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let product of category.Products">
+								<td>{{ product.ProductId }}</td>
+								<td>{{ product.ProductName }}</td>
+								<td>{{ product.Price }}</td>
+								<td>
+									<img [src]="product.Image" [alt]="product.ProductName" width="100" height="100" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</ng-container>
+	</tbody>
+</table>

@@ -1,0 +1,22 @@
+<table border="1">
+	<thead>
+		<tr>
+			<th>Ma San Pham</th>
+			<th>Ten San Pham</th>
+			<th>Gia San Pham</th>
+			<th>Picture</th>
+			<th>#</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (product of products; track product.ProductId) {
+			<tr>
+				<td>{{ product.ProductId }}</td>
+				<td>{{ product.ProductName }}</td>
+				<td>{{ product.Price }}</td>
+				<td><img [src]="product.Image" [alt]="product.ProductName" width="120" height="120"></td>
+				<td><button type="button" (click)="viewDetail(product)">Details</button></td>
+			</tr>
+		}
+	</tbody>
+</table>

@@ -1,0 +1,47 @@
+.catalog-table,
+.products-table {
+	border-collapse: collapse;
+	width: 640px;
+	font-family: Arial, sans-serif;
+}
+
+.catalog-table > tbody > tr > th,
+.catalog-table > tbody > tr > td,
+.products-table th,
+.products-table td {
+	border: 1px solid #777;
+	padding: 6px;
+}
+
+.category-row th {
+	text-align: left;
+	font-weight: 400;
+	background: #f5f5f5;
+}
+
+.category-value-row td {
+	height: 34px;
+}
+
+.products-cell {
+	padding: 4px !important;
+}
+
+.products-table {
+	width: 100%;
+}
+
+.products-table th {
+	text-align: left;
+	font-weight: 400;
+	background: #f5f5f5;
+}
+
+.products-table td {
+	height: 90px;
+}
+
+.products-table img {
+	display: block;
+	object-fit: contain;
+}
